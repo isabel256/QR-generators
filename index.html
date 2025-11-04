@@ -108,7 +108,7 @@
 
             border-color: #20c056;
             outline: none;
-           
+
         }
 
         button {
@@ -181,6 +181,7 @@
             opacity: 0;
             transition: opacity 0.5s;
         }
+       
 
         .logo-overlay.visible {
             opacity: 1;
@@ -282,6 +283,8 @@
         <div class="loader"></div>
         <p>Loading...</p>
     </div>
+    <div class="sin-internet"></div>
+
 
     <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -299,6 +302,7 @@
         const TU_QR_TITLE = document.querySelector('.tu-qr');
         const NOTA_PARAGRAPH = document.querySelector('.nota');
         const QR_WRAPPER = document.querySelector('.qr-wrapper');
+        const SIN_CONEXION = document.querySelector('.sin-internet');
 
 
         function showMessage(text) {
@@ -437,6 +441,31 @@
                 }, 500);
             });
         }
+
+        window.addEventListener('offline', () => {
+            showMessage('Sin conexión a internet');
+            GEN_QR_BUTTON.disabled = true; // Desactiva el botón
+            GEN_QR_BUTTON.style.opacity = '0.5'; // Lo pone visualmente apagado
+            GEN_QR_BUTTON.style.cursor = 'not-allowed';
+            SIN_CONEXION.innerHTML = `
+             <div id="preloader">
+        <div class="loader"></div>
+        <p>Loading...</p>
+        <p>Sin conexión a internet espere...</p>
+    </div>
+            
+            `
+        });
+
+        window.addEventListener('online', () => {
+            showMessage('Conexión a internet restaurada');
+            GEN_QR_BUTTON.disabled = false; // Desactiva el botón
+            GEN_QR_BUTTON.style.opacity = '1'; // Lo pone visualmente apagado
+            GEN_QR_BUTTON.style.cursor = 'pointer';
+            SIN_CONEXION.innerHTML = '';
+
+        });
+
 
         // Ejecutar función de precarga al inicio
         loading();
