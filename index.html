@@ -10,7 +10,8 @@
 
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
             background-color: #f4f7f6;
             display: flex;
             justify-content: center;
@@ -87,6 +88,8 @@
             margin-bottom: 8px;
             font-weight: bold;
             color: #333;
+            font-weight: 400;
+
         }
 
         input[type="text"] {
@@ -95,13 +98,18 @@
             margin-bottom: 15px;
             border: 2px solid #ccc;
             border-radius: 6px;
+            color: #1558b3;
             box-sizing: border-box;
             transition: border-color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
         }
 
         input[type="text"]:focus {
+
             border-color: #20c056;
             outline: none;
+            color: #1558b3;
         }
 
         button {
@@ -240,7 +248,7 @@
 
         <div class="input-section">
             <label for="qr-data" id="qr-label">Escribe el texto o URL para el QR:</label>
-            <input type="text" id="qr-data" placeholder="Ej: https://tupagina.com" required>
+            <input type="text" id="qr-data" placeholder="Ej: https://tecnovi-i.com" required>
             <button id="gen-qr" onclick="generateQRCode()">Generar QR</button>
         </div>
 
@@ -252,20 +260,21 @@
                     <img src="/codigo_qr_con_marca.png" alt="Imagen de ejemplo">
                 </div>
                 <img id="qr-logo" src="marca.png" alt="Tu Marca" class="logo-overlay">
-          
+
             </div>
-          
+
 
 
             <div class="group-btn hidden">
                 <button class="download" onclick="downloadQRCode()">
-                   <i class="bi bi-download"></i> <span style="font-size: 14px;"> Descargar QR</span>
+                    <i class="bi bi-download"></i> <span style="font-size: 14px;"> Descargar QR</span>
                 </button>
                 <button class="download" onclick="downloadBackgroundQRCode()">
                     <i class="bi bi-download"></i> <span style="font-size: 14px;"> Descargar QR con Fondo</span>
                 </button>
             </div>
             <p class="nota">El lector detectará automáticamente el enlace si escribes una URL.</p>
+            <p class="nota">www.Tecnovi-i.com</p>
         </div>
     </div>
     <div class="showMessaje"></div>
